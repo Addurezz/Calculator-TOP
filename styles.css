@@ -45,8 +45,8 @@ button {
     gap: 2px;
 }
 
-.zero{
-    flex: 1;
+#zero{
+    flex:1;
 }
 
 .plusOrMinus {
