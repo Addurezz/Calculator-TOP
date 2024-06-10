@@ -48,3 +48,7 @@ button {
 .zero{
     flex: 1;
 }
+
+.plusOrMinus {
+    font-size: 1.7rem;
+}
