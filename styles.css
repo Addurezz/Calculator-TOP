@@ -16,8 +16,16 @@ body {
 
 input {
     width: 200px; 
-    font-size: 2rem;
+    font-size: 3rem;
     background-color: hsl(0, 0%, 80%);
+}
+
+.opperand {
+    background-color: hsl(44, 100%, 55%);
+}
+
+.functional {
+    background-color: hsl(0, 2%, 75%);
 }
 
 .buttons {
