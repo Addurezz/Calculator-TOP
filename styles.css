@@ -52,3 +52,7 @@ button {
 .plusOrMinus {
     font-size: 1.7rem;
 }
+
+#equals {
+    background-color: hsl(44, 100%, 55%);
+}
