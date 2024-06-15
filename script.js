@@ -19,3 +19,19 @@ const division = (a,b) => {
     return a/b;
 }   
 
+//display pressed buttons on screen
+
+const output = document.querySelector("input");
+
+const displayItems = (item) => {
+    output.value += item.textContent;
+}
+
+// 
+
+const button = document.querySelectorAll(".button");
+
+button.forEach((element) => {
+    const userInput = element;
+    element.addEventListener("click", () => displayItems(element))
+})
