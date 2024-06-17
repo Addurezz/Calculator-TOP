@@ -9,15 +9,18 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: grey;
+    background-color: rgb(128, 62, 62);
     padding: 10px;
     border-radius: 10px;
 }
 
 input {
-    width: 200px; 
+    width: 200px;
     font-size: 3rem;
-    background-color: hsl(0, 0%, 80%);
+    background-color: hsla(0, 0%, 80%, 0.651);
+    margin-bottom: 10px;
+    border-radius: 5px;
+    text-align: right;
 }
 
 .opperand {
@@ -84,4 +87,12 @@ button {
 
 #equals {
     background-color: hsl(44, 100%, 55%);
+}
+
+#equals:hover {
+    background-color: hsl(44, 100%, 70%);
+}
+
+#equals:active {
+    background-color: hsl(44, 100%, 85%);
 }
