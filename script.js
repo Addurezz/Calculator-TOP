@@ -32,6 +32,7 @@ const operate = (a, b, opperand) => {
     }
 }
 
+
 // get numbers and operand
 
 let firstNumber = "";
@@ -62,25 +63,21 @@ numbers.forEach((number) => {
     } 
 )});
 
-// result
+
+// get the result
 
 const result = document.querySelector("#equals");
-let num1;
-let num2;
 
 result.addEventListener("click", () => {
-    num1 = parseFloat(firstNumber);
-    num2 = parseFloat(secondNumber);
-    const result = operate(num1, num2, opperand);
-    
-    output.value = result;
+    const num1 = parseFloat(firstNumber); // convert user input (string) to integer
+    const num2 = parseFloat(secondNumber); // ...
+    output.value = operate(num1, num2, opperand); // display result to display
     opperand = null;
     isFirstNumber = true;
-    firstNumber = `${result}`;
+    firstNumber = `${output.value}`;
     secondNumber = "";
-    num1 = result;
-    num2 = 0;
 })
+
 
 //display pressed buttons on screen
 
@@ -94,12 +91,13 @@ const displayItems = (item) => {
 
 
 button.forEach((element) => {
-    element.addEventListener("click", () => displayItems(element))
+    element.addEventListener("click", () => displayItems(element)) //display numbers
 })
 
 operations.forEach((op) => {
-    op.addEventListener("click", () => displayItems(op));
+    op.addEventListener("click", () => displayItems(op)); //display operators
 })
+
 
 //clear the screen 
 
@@ -113,6 +111,7 @@ clear.addEventListener("click", () => {
     opperand = null;
     output.value = "";
     })
+
 
 //clear last
 
@@ -148,6 +147,7 @@ const clearLast = () => {
 }
 
 clearLastBtn.addEventListener("click", clearLast)
+
 
 // throw error if more than one decimal point
 
