@@ -32,7 +32,7 @@ const operate = (a, b, opperand) => {
     }
 }
 
-// get first number
+// get numbers and operand
 
 let firstNumber = "";
 let secondNumber = "";
@@ -64,6 +64,28 @@ numbers.forEach((number) => {
     } 
 )});
 
+// result
+
+const result = document.querySelector("#equals");
+let num1;
+let num2;
+
+result.addEventListener("click", () => {
+    num1 = parseFloat(firstNumber);
+    num2 = parseFloat(secondNumber);
+    const result = operate(num1, num2, opperand);
+    
+    output.value = result;
+    opperand = null;
+    isfirstNumber = true;
+    firstNumber = `${result}`;
+    secondNumber = "";
+    num1 = result;
+    num2 = 0;
+    console.log(result,opperand, num1, num2);
+
+})
+
 //display pressed buttons on screen
 
 const output = document.querySelector("input");
@@ -75,12 +97,19 @@ const displayItems = (item) => {
 const button = document.querySelectorAll(".button");
 
 button.forEach((element) => {
-    const userInput = element;
     element.addEventListener("click", () => displayItems(element))
 })
 
+operations.forEach((op) => {
+    op.addEventListener("click", () => displayItems(op));
+})
 
 //clear the screen 
 
 const clear = document.querySelector("#clear");
-clear.addEventListener("click", () => output.value = "")
+clear.addEventListener("click", () => {
+    firstNumber = "";
+    secondNumber = "";
+    opperand = null;
+    output.value = ""
+    })
