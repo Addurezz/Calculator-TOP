@@ -36,7 +36,7 @@ const operate = (a, b, opperand) => {
 
 let firstNumber = "";
 let secondNumber = "";
-let isfirstNumber = true;
+let isFirstNumber = true;
 let opperand = null;
 
 const operations = document.querySelectorAll(".opperand");
@@ -44,7 +44,8 @@ const operations = document.querySelectorAll(".opperand");
 operations.forEach((op) => {
     op.addEventListener("click", () => {
         opperand = op.textContent
-        isfirstNumber = false;
+        decimalBtn.disabled = false;
+        isFirstNumber = false;
         console.log(opperand)
     })
 })
@@ -53,11 +54,11 @@ const numbers = document.querySelectorAll(".button");
 
 numbers.forEach((number) => {
     number.addEventListener("click", () => {
-        if (isfirstNumber && opperand == null) {
+        if (isFirstNumber && opperand == null) {
             firstNumber += number.textContent;
             console.log(firstNumber)
         }
-        else if (!isfirstNumber && opperand != null) {
+        else if (!isFirstNumber && opperand != null) {
             secondNumber += number.textContent;
             console.log(secondNumber)
         }
@@ -77,7 +78,7 @@ result.addEventListener("click", () => {
     
     output.value = result;
     opperand = null;
-    isfirstNumber = true;
+    isFirstNumber = true;
     firstNumber = `${result}`;
     secondNumber = "";
     num1 = result;
@@ -141,3 +142,19 @@ const clearLast = () => {
 }
 
 clearLastBtn.addEventListener("click", clearLast)
+
+// throw error if more than one decimal point
+
+const decimalBtn = document.querySelector("#dot");
+
+const decimalPoint = () => {
+    if (isFirstNumber && firstNumber.includes(".")) {
+        decimalBtn.disabled = true;
+    }
+
+    else if (!isFirstNumber && secondNumber.includes(".")) {
+        decimalBtn.disabled = true;
+    }
+}
+
+decimalBtn.addEventListener("click", decimalPoint);
