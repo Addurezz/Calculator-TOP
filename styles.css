@@ -12,6 +12,7 @@ body {
     background-color: rgb(128, 62, 62);
     padding: 10px;
     border-radius: 10px;
+    scale: 1.5;
 }
 
 input {
