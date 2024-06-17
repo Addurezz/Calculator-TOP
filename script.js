@@ -1,7 +1,3 @@
-let firstNumber = null;
-let secondNumber = null;
-let opperand = null;
-
 //calculator functions
 
 const addition = (a,b) => {
@@ -23,20 +19,50 @@ const division = (a,b) => {
     return a/b;
 }   
 
-const operate = (firstNumber, secondNumber, opperand) => {
+const operate = (a, b, opperand) => {
     switch (opperand) {
         case "+":
-            return addition(firstNumber, secondNumber);
+            return addition(a, b);
         case "-":
-            return subtraction(firstNumber, secondNumber);
+            return subtraction(a, b);
         case "*":
-            return multiplication(firstNumber,secondNumber);
+            return multiplication(a,b);
         case "/":
-            return division(firstNumber,secondNumber);
+            return division(a,b);
     }
 }
 
+// get first number
 
+let firstNumber = "";
+let secondNumber = "";
+let isfirstNumber = true;
+let opperand = null;
+
+const operations = document.querySelectorAll(".opperand");
+
+operations.forEach((op) => {
+    op.addEventListener("click", () => {
+        opperand = op.textContent
+        isfirstNumber = false;
+        console.log(opperand)
+    })
+})
+
+const numbers = document.querySelectorAll(".button");
+
+numbers.forEach((number) => {
+    number.addEventListener("click", () => {
+        if (isfirstNumber && opperand == null) {
+            firstNumber += number.textContent;
+            console.log(firstNumber)
+        }
+        else if (!isfirstNumber && opperand != null) {
+            secondNumber += number.textContent;
+            console.log(secondNumber)
+        }
+    } 
+)});
 
 //display pressed buttons on screen
 
@@ -53,14 +79,8 @@ button.forEach((element) => {
     element.addEventListener("click", () => displayItems(element))
 })
 
+
 //clear the screen 
 
 const clear = document.querySelector("#clear");
 clear.addEventListener("click", () => output.value = "")
-
-
-
-
-
-
-
