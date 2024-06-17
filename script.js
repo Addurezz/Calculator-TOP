@@ -69,13 +69,23 @@ numbers.forEach((number) => {
 const result = document.querySelector("#equals");
 
 result.addEventListener("click", () => {
+    
+
+    if (secondNumber == "" && !opperand) {
+        output.value = num1;
+        opperand = null;
+        isFirstNumber = true;
+        firstNumber = `${output.value}`;
+        secondNumber = "";
+    }
+    
     const num1 = parseFloat(firstNumber); // convert user input (string) to integer
     const num2 = parseFloat(secondNumber); // ...
     output.value = operate(num1, num2, opperand); // display result to display
     opperand = null;
     isFirstNumber = true;
     firstNumber = `${output.value}`;
-    secondNumber = "";
+    secondNumber = ""; 
 })
 
 
@@ -164,3 +174,4 @@ const decimalPoint = () => {
 }
 
 decimalBtn.addEventListener("click", decimalPoint);
+
