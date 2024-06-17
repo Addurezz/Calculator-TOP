@@ -83,7 +83,6 @@ result.addEventListener("click", () => {
     num1 = result;
     num2 = 0;
     console.log(result,opperand, num1, num2);
-
 })
 
 //display pressed buttons on screen
@@ -113,3 +112,44 @@ clear.addEventListener("click", () => {
     opperand = null;
     output.value = ""
     })
+
+//clear last
+
+const clearLastBtn = document.querySelector("#clearLast");
+
+const str = output.value;
+
+const clearLast = () => {
+    const lastD = str.substring(str.length-1, str.length);
+
+    if (lastD == "+" || lastD == "-" || lastD == "*" || lastD == "/"){
+        output.value = output.value.slice(0,-1)
+        opperand = null;
+        console.log(firstNumber, opperand, secondNumber)
+    }
+    else if (!opperand) {
+        output.value = output.value.slice(0,-1)
+        firstNumber = firstNumber.slice(0,-1);
+        console.log(firstNumber, opperand, secondNumber)
+    }
+
+    else if (opperand) {
+        output.value = output.value.slice(0,-1)
+        secondNumber = secondNumber.slice(0,-1);
+        console.log(firstNumber, opperand, secondNumber)
+    }
+}
+
+clearLastBtn.addEventListener("click", clearLast)
+
+/*clearLast.addEventListener("click", () => {
+    let str = output.value;
+    output.value = str.substring(0,str.length - 1);
+
+    if (str.substring(str.length - 1, str.length).includes("+") || 
+    str.substring(str.length - 1, str.length).includes("*") ||
+    str.substring(str.length - 1, str.length).includes("-") || 
+    str.substring(str.length - 1, str.length).includes("/")) {
+        opperand = null;
+    }
+})*/
