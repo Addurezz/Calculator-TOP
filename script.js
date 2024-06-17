@@ -46,7 +46,6 @@ operations.forEach((op) => {
         opperand = op.textContent
         decimalBtn.disabled = false;
         isFirstNumber = false;
-        console.log(opperand)
     })
 })
 
@@ -56,11 +55,9 @@ numbers.forEach((number) => {
     number.addEventListener("click", () => {
         if (isFirstNumber && opperand == null) {
             firstNumber += number.textContent;
-            console.log(firstNumber)
         }
         else if (!isFirstNumber && opperand != null) {
             secondNumber += number.textContent;
-            console.log(secondNumber)
         }
     } 
 )});
@@ -83,18 +80,18 @@ result.addEventListener("click", () => {
     secondNumber = "";
     num1 = result;
     num2 = 0;
-    console.log(result,opperand, num1, num2);
 })
 
 //display pressed buttons on screen
 
 const output = document.querySelector("input");
+const button = document.querySelectorAll(".button");
+
 
 const displayItems = (item) => {
     output.value += item.textContent;
 }
 
-const button = document.querySelectorAll(".button");
 
 button.forEach((element) => {
     element.addEventListener("click", () => displayItems(element))
@@ -107,37 +104,46 @@ operations.forEach((op) => {
 //clear the screen 
 
 const clear = document.querySelector("#clear");
+
 clear.addEventListener("click", () => {
+    decimalBtn.disabled = false;
+    isFirstNumber = true;
     firstNumber = "";
     secondNumber = "";
     opperand = null;
-    output.value = ""
+    output.value = "";
     })
 
 //clear last
 
 const clearLastBtn = document.querySelector("#clearLast");
 
-const str = output.value;
 
 const clearLast = () => {
-    const lastD = str.substring(str.length-1, str.length);
+    const lastD = output.value.substring(str.length-1, str.length);
 
     if (lastD == "+" || lastD == "-" || lastD == "*" || lastD == "/"){
         output.value = output.value.slice(0,-1)
         opperand = null;
-        console.log(firstNumber, opperand, secondNumber)
+    }
+    else if (lastD =="." && opperand) {
+        decimalBtn.disabled = false;
+        output.value = output.value.slice(0,-1)
+        firstNumber = firstNumber.slice(0,-1);
+    }
+    else if (lastD =="." && !opperand) {
+        output.value = output.value.slice(0,-1)
+        decimalBtn.disabled = false;
+        secondNumber = secondNumber.slice(0,-1);
     }
     else if (!opperand) {
         output.value = output.value.slice(0,-1)
         firstNumber = firstNumber.slice(0,-1);
-        console.log(firstNumber, opperand, secondNumber)
     }
 
     else if (opperand) {
         output.value = output.value.slice(0,-1)
         secondNumber = secondNumber.slice(0,-1);
-        console.log(firstNumber, opperand, secondNumber)
     }
 }
 
