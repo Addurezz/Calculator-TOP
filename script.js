@@ -119,7 +119,7 @@ const clearLastBtn = document.querySelector("#clearLast");
 
 
 const clearLast = () => {
-    const lastD = output.value.substring(str.length-1, str.length);
+    const lastD = output.value.substring(output.value.length-1, output.value.length);
 
     if (lastD == "+" || lastD == "-" || lastD == "*" || lastD == "/"){
         output.value = output.value.slice(0,-1)
