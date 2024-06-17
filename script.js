@@ -90,7 +90,7 @@ const displayItems = (item) => {
 }
 
 
-button.forEach((element) => {
+numbers.forEach((element) => {
     element.addEventListener("click", () => displayItems(element)) //display numbers
 })
 
