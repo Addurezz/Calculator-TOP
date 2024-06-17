@@ -141,15 +141,3 @@ const clearLast = () => {
 }
 
 clearLastBtn.addEventListener("click", clearLast)
-
-/*clearLast.addEventListener("click", () => {
-    let str = output.value;
-    output.value = str.substring(0,str.length - 1);
-
-    if (str.substring(str.length - 1, str.length).includes("+") || 
-    str.substring(str.length - 1, str.length).includes("*") ||
-    str.substring(str.length - 1, str.length).includes("-") || 
-    str.substring(str.length - 1, str.length).includes("/")) {
-        opperand = null;
-    }
-})*/
