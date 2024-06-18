@@ -42,6 +42,7 @@ input {
 
 .button:hover {
     background-color: hsl(0, 0%, 63%);
+    
 }
 
 .button:active {
@@ -96,4 +97,8 @@ button {
 
 #equals:active {
     background-color: hsl(44, 100%, 85%);
+}
+
+.opperand, .button, .functional {
+    cursor: pointer;
 }
