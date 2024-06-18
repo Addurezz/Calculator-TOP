@@ -37,14 +37,14 @@ const operate = (a, b, opperand) => {
 
 let firstNumber = "";
 let secondNumber = "";
-let isFirstNumber = true;
-let opperand = null;
+let isFirstNumber = true; //to check if inputs are added to first or second number
+let operand = null;
 
 const operations = document.querySelectorAll(".opperand");
 
 operations.forEach((op) => {
     op.addEventListener("click", () => {
-        opperand = op.textContent
+        operand = op.textContent
         decimalBtn.disabled = false;
         isFirstNumber = false;
     })
@@ -54,14 +54,27 @@ const numbers = document.querySelectorAll(".button");
 
 numbers.forEach((number) => {
     number.addEventListener("click", () => {
-        if (isFirstNumber && opperand == null) {
+        if (isFirstNumber && operand == null) {
             firstNumber += number.textContent;
         }
-        else if (!isFirstNumber && opperand != null) {
+        else if (!isFirstNumber && operand != null) {
             secondNumber += number.textContent;
         }
     } 
 )});
+
+const plusOrMinusBtn = document.querySelector("#plusOrMinus");
+
+plusOrMinusBtn.addEventListener("click", () => { //changes algebraic sign of the number
+    if (isFirstNumber && operand == null) {
+        firstNumber = "-"+firstNumber;
+        output.value = firstNumber;
+    }
+    else if (!isFirstNumber) {
+        secondNumber = "-"+secondNumber;
+        output.value = firstNumber + operand + "("+secondNumber+")"
+    }
+})
 
 
 // get the result
@@ -71,9 +84,9 @@ const result = document.querySelector("#equals");
 result.addEventListener("click", () => {
     
 
-    if (secondNumber == "" || opperand && secondNumber=="") {
+    if (secondNumber == "" || operand && secondNumber=="") {
         output.value = num1;
-        opperand = null;
+        operand = null;
         isFirstNumber = true;
         firstNumber = `${output.value}`;
         secondNumber = "";
@@ -81,8 +94,8 @@ result.addEventListener("click", () => {
 
     const num1 = parseFloat(firstNumber); // convert user input (string) to integer
     const num2 = parseFloat(secondNumber); // ...
-    output.value = operate(num1, num2, opperand); // display result to display
-    opperand = null;
+    output.value = operate(num1, num2, operand); // display result to display
+    operand = null;
     isFirstNumber = true;
     firstNumber = `${output.value}`;
     secondNumber = ""; 
@@ -92,7 +105,6 @@ result.addEventListener("click", () => {
 //display pressed buttons on screen
 
 const output = document.querySelector("input");
-const button = document.querySelectorAll(".button");
 
 
 const displayItems = (item) => {
@@ -118,7 +130,7 @@ clear.addEventListener("click", () => {
     isFirstNumber = true;
     firstNumber = "";
     secondNumber = "";
-    opperand = null;
+    operand = null;
     output.value = "";
     })
 
@@ -133,24 +145,24 @@ const clearLast = () => {
 
     if (lastD == "+" || lastD == "-" || lastD == "*" || lastD == "/"){
         output.value = output.value.slice(0,-1)
-        opperand = null;
+        operand = null;
     }
-    else if (lastD =="." && opperand) {
+    else if (lastD =="." && operand) {
         decimalBtn.disabled = false;
         output.value = output.value.slice(0,-1)
         firstNumber = firstNumber.slice(0,-1);
     }
-    else if (lastD =="." && !opperand) {
+    else if (lastD =="." && !operand) {
         output.value = output.value.slice(0,-1)
         decimalBtn.disabled = false;
         secondNumber = secondNumber.slice(0,-1);
     }
-    else if (!opperand) {
+    else if (!operand) {
         output.value = output.value.slice(0,-1)
         firstNumber = firstNumber.slice(0,-1);
     }
 
-    else if (opperand) {
+    else if (operand) {
         output.value = output.value.slice(0,-1)
         secondNumber = secondNumber.slice(0,-1);
     }
@@ -160,6 +172,7 @@ clearLastBtn.addEventListener("click", clearLast)
 
 
 // throw error if more than one decimal point
+// disable decimal point if it is clicked once already
 
 const decimalBtn = document.querySelector("#dot");
 
