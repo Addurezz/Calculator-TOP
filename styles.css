@@ -10,14 +10,14 @@ body {
     flex-direction: column;
     align-items: center;
     background-color: rgb(128, 62, 62);
-    padding: 10px;
-    border-radius: 10px;
-    scale: 1.5;
+    padding: 15px;
+    border-radius: 15px;
+    scale: 1;
 }
 
 input {
-    width: 200px;
-    font-size: 3rem;
+    width: 300px;
+    font-size: 4rem;
     background-color: hsla(0, 0%, 80%, 0.651);
     margin-bottom: 10px;
     border-radius: 5px;
@@ -67,16 +67,16 @@ input {
 }
 
 button {
-    font-size: 2rem;
-    width: 50px;
-    height: 50px;
+    font-size: 3rem;
+    width: 75px;
+    height: 75px;
     border-radius: 7px;
     color: white;
 }
 
 .topRow,.firstRow, .secondRow, .thirdRow, .fourthRow {
     display: flex;
-    gap: 2px;
+    gap: 3px;
 }
 
 #zero{
